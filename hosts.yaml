@@ -20,4 +20,3 @@ all:
     test:
       hosts:
         test.example.com:
-
