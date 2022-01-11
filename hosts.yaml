@@ -1,0 +1,23 @@
+all:
+  hosts:
+    ungroup.example.com:
+  children:
+    dmz:
+      hosts:
+        dmz.example.com:
+    app:
+      hosts:
+        app.example.com:
+    db:
+      hosts:
+        db.example.com:
+    stage:
+      hosts:
+        db.example.com:
+    sandbox:
+      hosts:
+        sandbox.example.com:
+    test:
+      hosts:
+        test.example.com:
+

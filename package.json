@@ -1,0 +1,18 @@
+{
+  "name": "ansible-security-playbook",
+  "version": "1.0.0",
+  "description": "Ansible which provides playbook helpful security team",
+  "scripts": {
+    "overrideChangelog": "gren changelog --overrid"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woodonggyu/ansible-security-playbook.git"
+  },
+  "author": "woodonggyu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woodonggyu/ansible-security-playbook/issues"
+  },
+  "homepage": "https://github.com/woodonggyu/ansible-security-playbook#readme"
+}
