@@ -1,16 +1,16 @@
-## How to build your inventory
+# How to build your inventory
 
 * [Documentation](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#how-to-build-your-inventory)
 
 
-### inventory basics: formats, host, and groups
+## inventory basics: formats, host, and groups
 
 인벤토리는 Ansible 에서 관리할 호스트의 모음을 정의한 것이다. (default. /etc/ansible/hosts)
 
 가장 일반적인 형식은 ini 또는 YAML 이다. `-i` 옵션을 사용해 cli 에서 인벤토리 파일을 명시적으로 지정할 수 있다.
 
 
-### Default groups 
+## Default groups 
 
 디폴트 그룹에는 `all`, `ungroup` 두 가지가 있다. 
 
@@ -20,7 +20,7 @@
 * `ungroup` 그룹은 다른 그룹을 제외한 모든 호스트가 포함된다.
 
 
-### Adding ranges of hosts
+## Adding ranges of hosts
 
 유사한 패턴을 가진 호스트가 있을경우, 각 호스트 명을 나열하지 않고 범위로 추가할 수 있다.
 
@@ -37,7 +37,7 @@ test:
 ```
 
 
-### Adding variables to inventory
+## Adding variables to inventory
 
 인벤토리의 특정 호스트나 그룹과 관련된 변수 값을 저장할 수 있다. 
 
@@ -45,7 +45,8 @@ test:
 
 참고로 인벤토리 내 변수 간의 우선순위는 호스트 변수가 그룹 변수보다 우선순위가 높다.
 
-#### Assigning a variable to one machine: host variables
+
+### Assigning a variable to one machine: host variables
 
 단일 호스트에 변수를 할당하고, 이를 플레이븍에서 사용 가능하다.
 
@@ -66,7 +67,8 @@ app:
       maxRequestsPerChild: 909
 ```
 
-#### Assigning a variable to many machines: group variables
+
+### Assigning a variable to many machines: group variables
 
 그룹의 모든 호스트가 변수 값을 공유하는 경우, 해당 변수를 전체 그룹에 적용할 수 있다.
 
@@ -90,7 +92,8 @@ atlanta:
     proxy: proxy.atlanta.example.com
 ```
 
-#### Inheriting variable values: group variables for groups of groups
+
+### Inheriting variable values: group variables for groups of groups
 
 `:children (INI)` 또는 `children: (YAML)` 항목을 사용해 그룹의 하위 그룹을 생성할 수 있다.
 
@@ -156,7 +159,8 @@ all:
 * 그룹에는 여러 부모와 자식이 있을 수 있지만, 순환 관계는 없다.
 * 호스트는 여러 그룹에 속할 수 있지만, 여러 그룹의 데이터를 병합하는 호스트 인스턴스는 하나 뿐이다.
 
-#### Organizing host and group variables
+
+### Organizing host and group variables
 
 기본 인벤토리 파일 내 변수를 저장할 수 있지만 별도의 호스트 및 그룹 변수 파일을 사용해 쉽게 구성할 수 있다.
 
@@ -178,4 +182,4 @@ Ansible 에서는 인벤토리 파일 또는 플레이북 파일과 관련된 �
 * ansible-playbook 명령은 기본적으로 현재 작업 중인 디렉토리에서 group_vars, host_vars 디렉토리를 찾는다.
 * Ansible 명령 (e.g ansible, ansible-console 등) 은 인벤토리 디렉토리 내의 group_vars, host_vars 디렉토리를 찾는다. 
 * 다른 명령이 플레이북 디렉토리에서 그룹 및 호스트 변수를 로드하도록 하고싶다면, 명령줄에 --playbook-dir 옵션을 사용한다.
-* 플레이북 디렉토리와 인벤토리 디렉토리 모두에서 인벤토리 파일을 로드하면 플레이북의 디렉토리의 변수가 인벤토리 디렉토리에 설정된 변수보다 우선순위가 높다.
+* 플레이북 디렉토리와 인벤토리 디렉토리 모두에서 파일을 로드 시, 플레이북의 디렉토리의 변수가 인벤토리 디렉토리에 설정된 변수보다 우선순위가 높다.
