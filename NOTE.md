@@ -163,3 +163,19 @@ all:
 **호스트 및 변수 그룹 파일은 YAML 구문을 사용해야 한다.** 
 
 Ansible 에서는 인벤토리 파일 또는 플레이북 파일과 관련된 경로를 검색하여 호스트 및 그룹 변수 파일을 로드한다.
+
+단일 파일이 너무 커지거나 일부 그룹 변수에서 Ansible Vault 를 사용하려는 경우, 변수를 체계적으로 유지하는데 유용하다.
+
+만약, `/etc/ansible/hosts` 에 위치한 인벤토리 파일이 'raleigh' 와 'webservers' 라는 두 그룹에 속하는 'foosball' 라는 호스트를 포함한 경우, 해당 호스트는 다음 위치에서 YAML 파일의 변수를 사용한다.
+```shell
+/etc/ansible/group_vars/raleigh
+/etc/ansible/group_vars/webservers
+/etc/ansible/host_vars/foosball
+```
+
+`group_vars/`, `host_vars/` 디렉토리를 플레이북 디렉토리에 추가할 수 있다.
+
+* ansible-playbook 명령은 기본적으로 현재 작업 중인 디렉토리에서 group_vars, host_vars 디렉토리를 찾는다.
+* Ansible 명령 (e.g ansible, ansible-console 등) 은 인벤토리 디렉토리 내의 group_vars, host_vars 디렉토리를 찾는다. 
+* 다른 명령이 플레이북 디렉토리에서 그룹 및 호스트 변수를 로드하도록 하고싶다면, 명령줄에 --playbook-dir 옵션을 사용한다.
+* 플레이북 디렉토리와 인벤토리 디렉토리 모두에서 인벤토리 파일을 로드하면 플레이북의 디렉토리의 변수가 인벤토리 디렉토리에 설정된 변수보다 우선순위가 높다.
