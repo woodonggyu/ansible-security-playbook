@@ -1,0 +1,29 @@
+- name: copy file
+  hosts: all
+  vars:
+    src: /path/file/abc
+    dest: /path/file/abc
+  tasks:
+    - name: copy file using vars
+      copy:
+        src: "{{ src }}"
+        dest: "{{ dest }}"
+    - name: copy file using with_items
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      with_items:
+        - { src: "/path/file/a", dest: "/path/file/a.txt"}
+        - { src: "/path/file/b", dest: "/path/file/b.txt"}
+        - { src: "/path/file/c", dest: "/path/file/c.txt"}
+    - name: copy file using glob
+      copy:
+        src: "{{ item }}"
+        dest: /home
+      with_fileglob:
+        - /path/file/hello*
+    - name: copy directory
+      copy:
+        src: /path/dir/
+        dest: /path/dir/
+
