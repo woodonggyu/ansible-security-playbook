@@ -3,7 +3,7 @@
 * [Documentation](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#how-to-build-your-inventory)
 
 
-## inventory basics: formats, host, and groups
+## Inventory basics: formats, host, and groups
 
 인벤토리는 Ansible 에서 관리할 호스트의 모음을 정의한 것이다. (default. /etc/ansible/hosts)
 
