@@ -1,0 +1,22 @@
+- name: execute command
+  hosts: all
+  tasks:
+    - name: execute command using 'command' module
+      command: "uptime"
+#      args:
+#        chdir:
+#        creates:
+#        removes:
+      register: output
+    - debug:
+        var: output.stdout_lines
+
+    - name: execute command using 'shell' module
+      shell: "uptime"
+#      args:
+#        chdir:
+#        creates:
+#        removes:
+      register: output1
+    - debug:
+        var: output1.stdout_lines
