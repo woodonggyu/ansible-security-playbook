@@ -1,0 +1,12 @@
+- name: fetch file
+  hosts: instance-2
+  remote_user: root
+  vars:
+    src: /remote/path/file
+    dest: /local/path/file
+  tasks:
+    - name: fetch file
+      fetch:
+        src: "{{ src }}"
+        dest: "{{ dest }}"
+        flat: yes
