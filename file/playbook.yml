@@ -1,0 +1,23 @@
+# https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html#file-module
+- name: create/delete file
+  hosts: all
+  tasks:
+    - name: Create file (touch)
+      file:
+        path: /path/to/filel
+        state: touch
+    - name: Create a directory if it does not exist
+      file:
+        path: /path/to/directory
+        state: directory
+    - name: Remove file (Recursive)
+      file:
+        path: /path/to/file
+        state: absent
+    - name: Remove files (Recursive)
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /path/to/directory
+        - /path/to/file
